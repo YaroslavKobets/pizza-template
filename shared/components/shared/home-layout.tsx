@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import {
@@ -10,6 +11,7 @@ import {
 import React, { Suspense, useEffect, useState } from 'react'
 import { useSidebarStore } from '@/shared/store'
 import { cn } from '@/shared/lib'
+import { ProductWithRelations } from '@/@types/prisma'
 
 export const HomeLayout = ({ categories }: { categories: any }) => {
 	const { isSidebarOpen } = useSidebarStore()
@@ -35,7 +37,10 @@ export const HomeLayout = ({ categories }: { categories: any }) => {
 			</Container>
 			<TopBar
 				isSmallScreen={isSmallScreen}
-				categories={categories.filter(category => category.products.length > 0)}
+				categories={categories.filter(
+					(category: { products: string | any[] }) =>
+						category.products.length > 0
+				)}
 			/>
 			<Container className='mt-9 pb-14 relative'>
 				<div className='flex items-start gap-4 md:gap-10'>
@@ -61,13 +66,17 @@ export const HomeLayout = ({ categories }: { categories: any }) => {
 							<div className='flex-1'>
 								<div className='flex flex-col gap-10'>
 									{categories.map(
-										category =>
+										(category: {
+											products: string | any[]
+											id: React.Key | null | undefined
+											name: string
+										}) =>
 											category.products.length > 0 && (
 												<ProductsGroupList
 													key={category.id}
 													title={category.name}
-													categoryId={category.id}
-													items={category.products}
+													categoryId={category.id as number}
+													items={category.products as ProductWithRelations[]}
 												/>
 											)
 									)}

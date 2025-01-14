@@ -60,7 +60,7 @@ async function up() {
 			imageUrl: '/pizza/pizza-1.webp',
 			categoryId: 1,
 			ingredients: {
-				connect: [{ id: 4 }, { id: 5 }, { id: 7 }],
+				connect: [{ id: 4 }, { id: 5 }, { id: 7 }, { id: 8 }],
 			},
 		},
 	})
@@ -126,7 +126,7 @@ async function up() {
 			imageUrl: '/pizza/pizza-7.webp',
 			categoryId: 1,
 			ingredients: {
-				connect: [{ id: 5 }, { id: 7 }, { id: 9 }],
+				connect: [{ id: 1 }, { id: 5 }, { id: 7 }, { id: 9 }],
 			},
 		},
 	})

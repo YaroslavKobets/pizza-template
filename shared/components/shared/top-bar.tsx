@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/shared/lib/utils'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Container } from './container'
 import { Categories } from './categories'
 import { Category } from '@prisma/client'
