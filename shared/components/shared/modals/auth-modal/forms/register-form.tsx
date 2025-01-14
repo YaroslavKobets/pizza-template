@@ -8,13 +8,14 @@ import { registerUser } from '@/app/actions'
 import { TFormRegisterValues, formRegisterSchema } from './schemas'
 import { FormInput } from '../../../form'
 import { Button } from '@/shared/components/ui'
+import { Title } from '../../../title'
 
 interface Props {
 	onClose?: VoidFunction
 	onClickLogin?: VoidFunction
 }
 
-export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
+export const RegisterForm: React.FC<Props> = ({ onClose }) => {
 	const form = useForm<TFormRegisterValues>({
 		resolver: zodResolver(formRegisterSchema),
 		defaultValues: {
@@ -34,7 +35,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
 			})
 
 			toast.success(
-				'Реєстрація успішна 📝. Підтвердіть свою електронну пошту',
+				'Rejestracja przebiegła pomyślnie 📝. Potwierdź swój adres e-mail',
 				{
 					icon: '✅',
 				}
@@ -42,7 +43,9 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
 
 			onClose?.()
 		} catch (error) {
-			return toast.error('Невірний E-Mail або пароль', {
+			console.error('Error [REGISTER]', error)
+
+			return toast.error('Nieprawidłowy adres e-mail lub hasło', {
 				icon: '❌',
 			})
 		}
@@ -50,16 +53,17 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
 
 	return (
 		<FormProvider {...form}>
+			<Title text='Rejestracja' size='md' className='font-bold' />
 			<form
 				className='flex flex-col gap-5'
 				onSubmit={form.handleSubmit(onSubmit)}
 			>
 				<FormInput name='email' label='E-Mail' required />
-				<FormInput name='fullName' label="Повне ім'я" required />
-				<FormInput name='password' label='Пароль' type='password' required />
+				<FormInput name='fullName' label='Pełne imię i nazwisko' required />
+				<FormInput name='password' label='Hasło' type='password' required />
 				<FormInput
 					name='confirmPassword'
-					label='Підтвердіть пароль'
+					label='Potwierdź hasło'
 					type='password'
 					required
 				/>
@@ -69,7 +73,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
 					className='h-12 text-base'
 					type='submit'
 				>
-					Зареєструватися
+					Zapisać się
 				</Button>
 			</form>
 		</FormProvider>

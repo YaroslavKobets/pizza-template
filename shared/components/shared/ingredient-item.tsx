@@ -36,7 +36,7 @@ export const IngredientItem: React.FC<Props> = ({
 				<Image fill src={imageUrl} alt={name} />
 			</div>
 			<span className='text-xs'>{name}</span>
-			<span className='font-bold'>{price} ГРН</span>
+			<span className='font-bold'>{price} zł</span>
 		</div>
 	)
 }

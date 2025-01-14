@@ -26,7 +26,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 	items,
 	defaultItems,
 	limit = 5,
-	searchInputPlaceholder = 'Пошук...',
+	searchInputPlaceholder = 'Szukaj...',
 	className,
 	loading,
 	onClickCheckbox,
@@ -75,9 +75,9 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 			)}
 
 			<div className='flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar'>
-				{list.map((item, index) => (
+				{list.map(item => (
 					<FilterCheckbox
-						text={item.text}
+						text={item.text.replace(' 50 gr', '')}
 						checked={selectedValues?.has(item.value)}
 						onCheckedChange={() => onClickCheckbox?.(item.value)}
 						key={item.value}
@@ -93,7 +93,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 						onClick={() => setShowAll(!showAll)}
 						className='text-primary mt-3'
 					>
-						{showAll ? 'Приховати' : '+ Показати все'}
+						{showAll ? 'Ukrywać' : '+ Pokaż wszystko'}
 					</button>
 				</div>
 			)}

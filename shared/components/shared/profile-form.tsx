@@ -39,12 +39,12 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
 				password: data.password,
 			})
 
-			toast.error('Дані оновлено 📝', {
+			toast.error('Dane zostały zaktualizowane 📝', {
 				icon: '✅',
 			})
 		} catch (error) {
 			console.error(error)
-			return toast.error('Помилка при оновленні даних', {
+			return toast.error('Błąd podczas aktualizacji danych', {
 				icon: '❌',
 			})
 		}
@@ -59,7 +59,7 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
 	return (
 		<Container className='my-10'>
 			<Title
-				text={`Особисті дані | #${data.id}`}
+				text={`Dane osobowe | #${data.id}`}
 				size='md'
 				className='font-bold'
 			/>
@@ -70,18 +70,18 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
 					onSubmit={form.handleSubmit(onSubmit)}
 				>
 					<FormInput name='email' label='E-Mail' required />
-					<FormInput name='fullName' label="Повне ім'я" required />
+					<FormInput name='fullName' label='Pełne imię i nazwisko' required />
 
 					<FormInput
 						type='password'
 						name='password'
-						label='Новий пароль'
+						label='Nowe hasło'
 						required
 					/>
 					<FormInput
 						type='password'
 						name='confirmPassword'
-						label='Повторіть пароль'
+						label='Powtórz hasło'
 						required
 					/>
 
@@ -90,7 +90,7 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
 						className='text-base mt-10'
 						type='submit'
 					>
-						Зберегти
+						Ratować
 					</Button>
 
 					<Button
@@ -100,7 +100,7 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
 						className='text-base'
 						type='button'
 					>
-						Вийти
+						Wychodzić
 					</Button>
 				</form>
 			</FormProvider>

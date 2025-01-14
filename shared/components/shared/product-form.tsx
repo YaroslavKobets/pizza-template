@@ -31,10 +31,10 @@ export const ProductForm: React.FC<Props> = ({
 				ingredients,
 			})
 
-			toast.success(`${product.name} додано в кошик`)
+			toast.success(`${product.name} został dodany do koszyka`)
 			_onSubmit?.()
 		} catch (error) {
-			toast.error(`Не вдалось додати ${product.name} в кошик`)
+			toast.error(`Nie udało się dodać ${product.name} do koszyka`)
 			console.log(error)
 		}
 	}

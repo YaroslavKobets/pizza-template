@@ -8,17 +8,17 @@ interface Props {
 
 export const CheckoutAddressForm: React.FC<Props> = ({ className }) => {
 	return (
-		<WhiteBlock className={className} title='Адрес доставки'>
-			<div className='grid gap-5'>
+		<WhiteBlock className={className} title='Adres dostawy'>
+			<div className='grid gap-2 sm:gap-5'>
 				<FormInput
 					name='address'
 					className='text-base'
-					placeholder='Адреса доставки'
+					placeholder='Adres dostawy'
 				/>
 				<FormTextarea
 					name='comment'
 					rows={5}
-					placeholder='Примітка до замовлення'
+					placeholder='Notatka dotycząca zamówienia'
 					className='text-base'
 				/>
 			</div>

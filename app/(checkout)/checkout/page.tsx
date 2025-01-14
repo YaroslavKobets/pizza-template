@@ -58,9 +58,12 @@ export default function CheckoutPage() {
 
 			const redirectUrl = await createOrder(data)
 
-			toast.success('Замовлення успішно оформлено! 📝 Перехід до оплати...', {
-				icon: '✅',
-			})
+			toast.success(
+				'Zamówienie zostało pomyślnie złożone! 📝 Przejdź do płatności...',
+				{
+					icon: '✅',
+				}
+			)
 
 			if (redirectUrl) {
 				location.href = redirectUrl
@@ -68,7 +71,7 @@ export default function CheckoutPage() {
 		} catch (err) {
 			console.error(err)
 			setSubmitting(false)
-			toast.error('Не вдалося створити замовлення', {
+			toast.error('Nie udało się utworzyć zamówienia', {
 				icon: '❌',
 			})
 		}
@@ -83,13 +86,13 @@ export default function CheckoutPage() {
 		updateItemQuantity(id, newQuantity)
 	}
 	return (
-		<Container>
-			<Title text='Оформлення замовлення' size='lg' className='my-6' />
+		<Container className='pb-5'>
+			<Title text='Zamawianie' size='lg' className=' my-2 sm:my-6' />
 
 			<FormProvider {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
-					<div className='flex gap-10'>
-						<div className='grid gap-10 w-full'>
+					<div className='grid sm:flex gap-2 md:gap-10'>
+						<div className='grid gap-2 md:gap-10 w-full'>
 							<CheckoutCart
 								items={items}
 								onClickCountButton={onClickCountButton}
@@ -103,7 +106,7 @@ export default function CheckoutPage() {
 								className={loading ? 'opacity-50 pointer-events-none' : ''}
 							/>
 						</div>
-						<div className='w-full max-w-[450px]'>
+						<div className='w-full sm:max-w-[450px]'>
 							<CheckoutSidebar
 								totalAmount={totalAmount}
 								loading={loading || submitting}

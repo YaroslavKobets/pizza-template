@@ -1,15 +1,27 @@
+'use client'
+
 import { cn } from '@/shared/lib/utils'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container } from './container'
 import { Categories } from './categories'
 import { Category } from '@prisma/client'
+import { Button } from '../ui'
+import { useSidebarStore } from '@/shared/store'
+import { Eye, EyeOff } from 'lucide-react'
 
 interface Props {
 	className?: string
+	isSmallScreen?: boolean
 	categories: Category[]
 }
 
-export const TopBar: React.FC<Props> = ({ categories, className }) => {
+export const TopBar: React.FC<Props> = ({
+	categories,
+	isSmallScreen,
+	className,
+}) => {
+	const { isSidebarOpen, toggleSidebar } = useSidebarStore()
+
 	return (
 		<div
 			className={cn(
@@ -17,9 +29,18 @@ export const TopBar: React.FC<Props> = ({ categories, className }) => {
 				className
 			)}
 		>
-			<Container className='flex items-center justify-between'>
-				<Categories items={categories} />
+			<Container className='flex gap-2 flex-wrap sm:flex-nowrap'>
+				{!isSidebarOpen && <Categories items={categories} />}
 				{/* <SortPopup /> */}
+				{isSmallScreen && (
+					<Button
+						onClick={toggleSidebar}
+						className='w-full flex gap-2 items-center'
+					>
+						Filtry
+						{isSidebarOpen ? <EyeOff /> : <Eye />}
+					</Button>
+				)}
 			</Container>
 		</div>
 	)

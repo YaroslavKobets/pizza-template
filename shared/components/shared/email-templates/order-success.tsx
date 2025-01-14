@@ -8,17 +8,17 @@ interface Props {
 
 export const OrderSuccessTemplate: React.FC<Props> = ({ orderId, items }) => (
 	<div>
-		<h1>Дякуємо за покупку! 🎉</h1>
+		<h1>Dziękujemy za zakup! 🎉</h1>
 
-		<p>Ваше замовлення #{orderId} оплачено. Список товарів:</p>
+		<p>Twoje zamówienie nr {orderId} zostało opłacone. Lista produktów:</p>
 
 		<hr />
 
 		<ul>
 			{items.map(item => (
 				<li key={item.id}>
-					{item.productItem.product.name} | {item.productItem.price} ₴ x{' '}
-					{item.quantity} шт. = {item.productItem.price * item.quantity} ₴
+					{item.productItem.product.name} | {item.productItem.price} zł x{' '}
+					{item.quantity} szt. = {item.productItem.price * item.quantity} zł
 				</li>
 			))}
 		</ul>

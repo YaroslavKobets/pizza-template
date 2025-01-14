@@ -6,5 +6,7 @@ interface Props {
 }
 
 export const CartItemDetailsPrice: React.FC<Props> = ({ value, className }) => {
-	return <h2 className={cn('font-bold', className)}>{value} ГРН</h2>
+	return (
+		<h2 className={cn('font-bold whitespace-nowrap', className)}>{value} zł</h2>
+	)
 }

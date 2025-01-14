@@ -57,7 +57,6 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 				ref={ref}
 				className={cn(
 					'flex rounded-2xl flex-1 justify-between relative h-11 z-30',
-
 					className
 				)}
 			>
@@ -67,7 +66,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 				/>
 				<input
 					type='text'
-					placeholder='Знайти піцу...'
+					placeholder='Znajdź pizzę...'
 					className={cn(
 						'rounded-2xl outline-none w-full bg-gray-100 pl-11 transition-all duration-200',
 						focused && 'rounded-b-[0px]'
@@ -102,7 +101,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
 							</Link>
 						))
 					) : (
-						<div className='gap-3 px-3 py-2'>Нічого не знайдено 😱</div>
+						<div className='gap-3 px-3 py-2'>Nic nie znaleziono 😱</div>
 					)}
 				</div>
 			</div>

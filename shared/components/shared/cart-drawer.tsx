@@ -39,7 +39,8 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 				{totalAmount > 0 && (
 					<SheetHeader>
 						<SheetTitle>
-							В кошику <span className='font-bold'>{items.length} товари</span>
+							W koszyku{' '}
+							<span className='font-bold'>{items.length} elementów</span>
 						</SheetTitle>
 					</SheetHeader>
 				)}
@@ -55,17 +56,17 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 							/>
 						</div>
 						<Title
-							text='Кошик порожній'
+							text='Koszyk jest pusty'
 							size='md'
 							className='text-center font-bold my-2'
 						/>
 						<p className='text-neutral-500 mb-5'>
-							Оберіть страву, щоб зробити замовлення
+							Wybierz danie, aby złożyć zamówienie
 						</p>
 						<SheetClose>
 							<Button className='text-base' size='lg'>
 								<ArrowLeft size={20} className='mr-2' />
-								Повернутися назад
+								Wracać
 							</Button>
 						</SheetClose>
 					</div>
@@ -100,10 +101,10 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 							<div className='w-full '>
 								<div className='flex mb-4'>
 									<span className='flex flex-1 text-lg text-neutral-500'>
-										Сума
+										Suma
 										<div className='flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2' />
 									</span>
-									<span className='font-bold text-lg'>{totalAmount} грн</span>
+									<span className='font-bold text-lg'>{totalAmount} zł</span>
 								</div>
 								<Link href='/checkout'>
 									<Button
@@ -112,7 +113,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 										type='submit'
 										className='w-full h-12 text-base'
 									>
-										Оформить замовлення <ArrowRight className='w-5 ml-2' />
+										Składać zamówienie <ArrowRight className='w-5 ml-2' />
 									</Button>
 								</Link>
 							</div>

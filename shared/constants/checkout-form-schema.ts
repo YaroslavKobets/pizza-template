@@ -3,13 +3,13 @@ import { z } from 'zod'
 export const checkoutFormSchema = z.object({
 	firstName: z
 		.string()
-		.min(2, { message: "Ім'я повинно містити щонайменше 2 символи" }),
+		.min(2, { message: 'Nazwa musi zawierać co najmniej 2 znaki' }),
 	lastName: z
 		.string()
-		.min(2, { message: 'Прізвище повинно містити щонайменше 2 символи' }),
-	email: z.string().email({ message: 'Введіть коректну електронну пошту' }),
-	phone: z.string().min(10, { message: 'Введіть коректний номер телефону' }),
-	address: z.string().min(5, { message: 'Введіть коректну адресу' }),
+		.min(2, { message: 'Nazwisko musi zawierać co najmniej 2 znaki' }),
+	email: z.string().email({ message: 'Proszę podać prawidłowy adres e-mail' }),
+	phone: z.string().min(10, { message: 'Wpisz prawidłowy numer telefonu' }),
+	address: z.string().min(5, { message: 'Proszę wprowadzić prawidłowy adres' }),
 	comment: z.string().optional(),
 })
 

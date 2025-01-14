@@ -2,22 +2,22 @@ import { z } from 'zod'
 
 export const passwordSchema = z
 	.string()
-	.min(4, { message: 'Введіть коректний пароль' })
+	.min(4, { message: 'Wprowadź prawidłowe hasło' })
 
 export const formLoginSchema = z.object({
-	email: z.string().email({ message: 'Введіть коректну пошту' }),
+	email: z.string().email({ message: 'Wpisz prawidłowy adres e-mail' }),
 	password: passwordSchema,
 })
 
 export const formRegisterSchema = formLoginSchema
 	.merge(
 		z.object({
-			fullName: z.string().min(2, { message: "Введіть ім'я та прізвище" }),
+			fullName: z.string().min(2, { message: 'Wpisz imię i nazwisko' }),
 			confirmPassword: passwordSchema,
 		})
 	)
 	.refine(data => data.password === data.confirmPassword, {
-		message: 'Паролі не збігаються',
+		message: 'Hasła nie pasują',
 		path: ['confirmPassword'],
 	})
 

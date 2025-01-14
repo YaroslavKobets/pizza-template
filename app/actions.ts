@@ -75,7 +75,7 @@ export async function createOrder(data: CheckoutFormValues) {
 
 		await sendEmail(
 			data.email,
-			'Pizza / Оплатіть замовлення #' + order.id,
+			'Pizza / Zapłać za zamówienie#' + order.id,
 			PayOrderTemplate({
 				orderId: order.id,
 				totalAmount: order.totalAmount,
@@ -94,7 +94,7 @@ export async function updateUserInfo(body: Prisma.UserUpdateInput) {
 		const currentUser = await getUserSession()
 
 		if (!currentUser) {
-			throw new Error('Користувач не знайдено')
+			throw new Error('Użytkownik nie został znaleziony')
 		}
 
 		const findUser = await prisma.user.findFirst({
@@ -131,11 +131,11 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 
 		if (user) {
 			if (!user.verified) {
-				console.log('Користувач знайдений, але не підтверджений:', user)
-				throw new Error('Пошта не підтверджена')
+				console.log('Użytkownik znaleziony, ale niezweryfikowany:', user)
+				throw new Error('Adres e-mail niepotwierdzony')
 			}
 
-			throw new Error('Користувач вже існує')
+			throw new Error('Użytkownik już istnieje')
 		}
 
 		const createdUser = await prisma.user.create({
@@ -157,13 +157,13 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 
 		await sendEmail(
 			createdUser.email,
-			'Pizza / 📝 Підтвердження реєстрації',
+			'Pizza / 📝 Potwierdzenie rejestracji',
 			VerificationUserTemplate({
 				code,
 			})
 		)
 	} catch (err) {
-		console.log('Помилка [CREATE_USER]', err)
+		console.log('Błąd [CREATE_USER]', err)
 		throw err
 	}
 }

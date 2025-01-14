@@ -26,8 +26,8 @@ export const CheckoutCart: React.FC<Props> = ({
 	className,
 }) => {
 	return (
-		<WhiteBlock title='Кошик' className={className}>
-			<div className='grid gap-5'>
+		<WhiteBlock title='Koszyk' className={className}>
+			<div className='grid gap-2 sm:gap-5'>
 				{loading
 					? [...Array(4)].map((_, index) => (
 							<Skeleton key={index} className='h-14' />

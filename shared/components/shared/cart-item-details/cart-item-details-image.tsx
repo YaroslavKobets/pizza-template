@@ -8,7 +8,7 @@ interface Props {
 
 export const CartItemDetailsImage: React.FC<Props> = ({ src, className }) => {
 	return (
-		<div className={cn('relative h-14 w-14', className)}>
+		<div className={cn('relative h-14 min-w-14', className)}>
 			<Image src={src} fill alt='' />
 		</div>
 	)

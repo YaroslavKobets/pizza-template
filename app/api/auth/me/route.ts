@@ -12,7 +12,7 @@ export async function GET(req: any, res: any) {
 
 		if (!user) {
 			return NextResponse.json(
-				{ message: 'Ви не авторизовані' },
+				{ message: 'Nie masz uprawnień.' },
 				{ status: 401 }
 			)
 		}

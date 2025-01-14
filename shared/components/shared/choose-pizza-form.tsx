@@ -10,6 +10,7 @@ import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza'
 import { IngredientItem } from './ingredient-item'
 import { cn, getPizzaDetails } from '@/shared/lib'
 import { usePizzaOptions } from '@/shared/hooks'
+import { _ingredients } from '@/prisma/constants'
 
 interface Props {
 	imageUrl: string
@@ -79,7 +80,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 
 				<div className='bg-green-50 p-2 rounded-sm h-40 overflow-auto scrollbar'>
 					<div className='grid grid-cols-3 gap-2'>
-						{ingredients.map(ingredient => (
+						{_ingredients.map(ingredient => (
 							<IngredientItem
 								key={ingredient.id}
 								imageUrl={ingredient.imageUrl}
@@ -97,7 +98,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 					onClick={handleClickAdd}
 					className='h-14 px-10 text-base rounded-2xl w-full mt-8'
 				>
-					Додати в кошик за {totalPrice} ГРН
+					Dodaj do koszyka za {totalPrice} zł
 				</Button>
 			</div>
 		</div>

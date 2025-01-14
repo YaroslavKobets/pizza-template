@@ -16,7 +16,11 @@ export const getPizzaDetails = (
 		ingredients,
 		selectedIngredients
 	)
-	const textDetails = `${size} см, ${mapPizzaType[type]} тісто`
+	console.log(ingredients)
+
+	const textDetails = `${size} cm, ${mapPizzaType[type]} ciasto, ${ingredients
+		.map(item => item.name.replace(' 50 gr', ''))
+		.join(', ')}`
 
 	return { totalPrice, textDetails }
 }

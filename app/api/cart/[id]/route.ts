@@ -40,7 +40,7 @@ export async function PATCH(
 	} catch (error) {
 		console.log('[CART_PATCH] Server error', error)
 		return NextResponse.json(
-			{ message: 'Не вдалось оновити кошик' },
+			{ message: 'Nie można zaktualizować koszyka.' },
 			{ status: 500 }
 		)
 	}
@@ -79,7 +79,7 @@ export async function DELETE(
 	} catch (error) {
 		console.log('[CART_PATCH] Server error', error)
 		return NextResponse.json(
-			{ message: 'Не вдалось оновити кошик' },
+			{ message: 'Nie można zaktualizować koszyka.' },
 			{ status: 500 }
 		)
 	}

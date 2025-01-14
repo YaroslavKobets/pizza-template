@@ -5,12 +5,15 @@ import { Title } from './title'
 import { Input, RangeSlider } from '../ui'
 import { CheckboxFiltersGroup } from './checkbox-filters-group'
 import { useFilters, useIngredients, useQueryFilters } from '@/shared/hooks'
+import { useSidebarStore } from '@/shared/store'
+import { cn } from '@/shared/lib'
 
 interface Props {
 	className?: string
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
+	const { isSidebarOpen } = useSidebarStore()
 	const { ingredients, loading } = useIngredients()
 	const filters = useFilters()
 
@@ -27,37 +30,41 @@ export const Filters: React.FC<Props> = ({ className }) => {
 	}
 
 	return (
-		<div className={className}>
-			<Title text='Фільтрація' size='sm' className='mb-5 font-extrabold' />
+		<div
+			className={cn(className, {
+				'left-0 w-full bg-white max-w-full px-3 pb-5': isSidebarOpen,
+			})}
+		>
+			<Title text='Filtrowanie' size='sm' className='mb-5 font-extrabold' />
 			<CheckboxFiltersGroup
 				className='mt-5'
 				name='pizzaTypes'
-				title='Тип тіста'
+				title='Rodzaj ciasta'
 				selectedValues={filters.pizzaTypes}
 				loading={loading}
 				onClickCheckbox={filters.setPizzaTypes}
 				limit={2}
 				items={[
-					{ text: 'Тонке', value: '1' },
-					{ text: 'Пухке', value: '2' },
+					{ text: 'Cienki', value: '1' },
+					{ text: 'Puszyste', value: '2' },
 				]}
 			/>
 			<CheckboxFiltersGroup
 				className='mt-5'
 				name='sizes'
-				title='Розміри'
+				title='Wymiary'
 				selectedValues={filters.sizes}
 				loading={loading}
 				onClickCheckbox={filters.setSizes}
 				limit={3}
 				items={[
-					{ text: '20 см', value: '20' },
-					{ text: '30 см', value: '30' },
-					{ text: '40 см', value: '40' },
+					{ text: '20 cm', value: '20' },
+					{ text: '30 cm', value: '30' },
+					{ text: '40 cm', value: '40' },
 				]}
 			/>
 			<div className='mt-5 border-y border-y-neutral-100 py-6 pb-7'>
-				<p className='font-bold mb-3'>Ціна від і до</p>
+				<p className='font-bold mb-3'>Cena od i do</p>
 				<div className='flex gap-3 mb-5'>
 					<Input
 						type='number'
@@ -92,7 +99,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 			<CheckboxFiltersGroup
 				className='mt-5'
 				name='ingredients'
-				title='Інгредієнти'
+				title='Składniki'
 				defaultItems={items.slice(0, 5)}
 				items={items}
 				loading={loading}
